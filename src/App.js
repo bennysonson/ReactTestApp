@@ -16,7 +16,7 @@ const App = () => {
         const response = await fetch(`${API_URL}&s=${title}`)
         const data = await response.json();
         setMovies(data.Search);
-        console.log(movies);
+        /* console.log(movies); */
     }
 
 
