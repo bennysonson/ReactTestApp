@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from 'react';
 import './App.css'
 import searchIcon from './search.svg'
 import MovieCard from "./MovieCard";
@@ -17,11 +16,9 @@ const App = () => {
         const response = await fetch(`${API_URL}&s=${title}`)
         const data = await response.json();
         setMovies(data.Search);
+        console.log(movies);
     }
 
-    useEffect(() => {
-        searchMovies('Spiderman');
-    }, []);
 
     return (
         <div className="App">
@@ -36,7 +33,7 @@ const App = () => {
                 movies?.length > 0 ? (
                     <div className="container">
                         {movies.map(movie => (
-                            <MovieCard movie={movie} />
+                            <MovieCard movie={movie} key={movie.Title + movie.Year}/>
                         ))}
                     </div>
                 ) : (
